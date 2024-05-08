@@ -1,0 +1,26 @@
+<div class="book-outer-cnt">
+    <!-- <img src="C:/Users/padma/OneDrive/Pictures/Book1.png">
+    <img src="assets/images/Book1.png" alt=""> -->
+    <div *ngFor="let book of BookObjList" class="book-cnt" >
+        <div class="book-image-background-cnt" (click)="handleBook(book)">
+            <img src="{{book?.bookImage}}" class="book-image">
+        </div>
+
+        <div class="book-details">
+            <span><b>{{book?.bookName}}</b></span>
+        
+        
+            <span>{{book?.authorName}}</span>
+        
+        <div class="rating-quantity">
+         <span class="rating">4.5 &#9733;</span>
+         
+         <span>{{book?.quantity}}</span>
+        </div>
+       
+            <span><b>Rs. {{book?.price}}</b></span>
+       
+       </div>
+        
+    </div>
+</div>

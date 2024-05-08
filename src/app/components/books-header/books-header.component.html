@@ -1,0 +1,35 @@
+<div class="header-main-cnt">
+    
+    <img src="assets/images/education.png" alt="Image not found">
+    <h3 class="title">BookStore</h3>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search...">
+        <mat-icon class="search-icon" svgIcon="search-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+    </div>
+
+    <div class="profile">
+    <mat-icon class="profile-icon" [matMenuTriggerFor]="ProfileMenu" svgIcon="profile-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+    <span>Profile</span>
+    </div>
+
+    <div class="cart">
+    <mat-icon class="cart-icon" svgIcon="cart-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+    <span>Cart</span>
+    </div>
+   
+</div>
+<mat-menu #ProfileMenu="matMenu">
+    <div class="profile-history">
+    <button mat-button>Delete Note</button>
+    <button mat-button>Add Label</button>
+    <button mat-button>Add Drawing</button>
+    <button mat-button>Make a Copy</button>
+    <button mat-button>Show Tick Boxes</button>
+    <button mat-button>Copy to Google docs</button>
+    <button mat-button>Version History</button>
+    </div>
+</mat-menu>   
+<div>
+    <router-outlet></router-outlet>
+</div>

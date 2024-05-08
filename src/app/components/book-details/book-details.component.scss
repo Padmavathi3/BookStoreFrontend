@@ -1,0 +1,94 @@
+.bookdetails-outer-cnt{
+    width:100%;
+    padding:1% 12%;
+}
+
+.back-to-dashbaord a{
+    text-decoration: none;
+}
+
+.book-details-cnt{
+    display: flex;
+    flex-direction: row;
+    gap:7%;
+}
+
+.book-image-and-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.book-image {
+    border: 2px solid black;
+    height: 300px;
+    width: 220px;
+    padding: 10% 10%;
+    box-shadow: 0 -4px 4px -4px rgba(0, 0, 0, 0.3), /* Top */
+               -4px 0 4px -4px rgba(0, 0, 0, 0.3), /* Left */
+                4px 0 4px -4px rgba(0, 0, 0, 0.3), /* Right */
+                0 6px 6px -2px rgba(0, 0, 0, 0.2); /* Bottom */
+ }
+
+ .options{
+   display: flex;
+   flex-direction: row;
+   //justify-content: space-between;
+   gap:7%;
+ }
+.cart-button{
+    background-color: maroon;
+    color: white;
+}
+
+.wishlist-button{
+    background-color: gray;
+    color: white;
+}
+
+.wishlist-button::before {
+    font-size: 24px; /* Increase the font size for the heart symbol */
+    vertical-align: middle; /* Align the heart symbol vertically */
+    content: '\2665'; /* Unicode character for heart symbol */
+    margin-right: 10px; /* Add some spacing between the heart symbol and text */
+}
+.book-details{
+    display: flex;
+    flex-direction: column;
+    gap:2%;
+    padding-right: 20%;
+}
+
+.rating-quantity{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.rating{
+    border: 1px solid black;
+    background-color: green;
+    color: white;
+}
+
+.book-details h2,
+.book-details h3 {
+    margin: 0; /* Remove default margin for heading elements */
+}
+
+/* For horizontal line */
+.book-details hr {
+   
+    border-top: 1px solid black;
+    margin: 20px 0; /* Adjust margin as needed */
+  }
+  
+  /* For stars */
+  .stars {
+    font-size: 24px;
+    outline-color:black ;
+    //color: white;
+  }
+
+
+  
