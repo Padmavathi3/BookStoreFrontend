@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
      this.userService.loginCall(email, password).subscribe((res) => {
        console.log(res)
        localStorage.setItem("AuthToken", res.data)
-       this.router.navigate(["/dashboard/notes"])
+      
     },
       (err) => console.log(err)
     )
