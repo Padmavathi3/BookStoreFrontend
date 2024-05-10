@@ -6,8 +6,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding:0 12%;
+    //margin-left: 10%;
+    // padding:0 12%;
     //position:fixed;
+    //padding-left: 10%;
+}
+img{
+    margin-left: 10%;   
 }
 .title{
     color: white;
@@ -22,7 +27,7 @@
 .search-input {
     width: 550px; /* Set width of input field */
     height:28px;
-    padding: 5px; /* Add padding */
+    // padding: 5px; /* Add padding */
     border-radius: 8px;
     text-indent: 30px; /* Adjust as needed */
 }
@@ -32,7 +37,7 @@
     width:15px;
     margin-left: -550px; /* Adjust the left margin as needed */
     line-height: 0px;
-    padding-bottom: 1px;
+    // padding-bottom: 1px;
 }
 .profile{
     display: flex;
@@ -42,6 +47,10 @@
     font-size: 10px;
     gap:5px;
     margin-top: 10px;
+    //position: relative;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .cart{
@@ -52,5 +61,28 @@
     font-size: 10px;
     gap:5px;
     margin-top: 10px;
+    &:hover{
+        cursor: pointer;
+    }
 }
+
+.profile-history{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding:0% 2% ;
+    //gap:50%;
+
+}
+.login-signup button {
+    border: 1px solid red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: red;
+}
+
+
+
+
 

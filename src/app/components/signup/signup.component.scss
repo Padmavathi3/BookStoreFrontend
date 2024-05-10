@@ -1,0 +1,34 @@
+.signup-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 5%;
+}
+
+
+.input {
+    width: 300px;
+    padding: 8px; /* Adjust padding as needed */
+    margin-bottom: 10px; /* Adjust margin-bottom as needed */
+    border: 2px solid black; /* Add border */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+}
+
+.signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: maroon;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.mat-error {
+    font-size: smaller; /* Adjust the font size as desired */
+  }
+  
+
+

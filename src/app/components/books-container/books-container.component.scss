@@ -1,10 +1,13 @@
 .books-main-cnt{
     width:100%;
-    padding:0% 12%;
+    // padding:0% 12%;
 }
 .headong-content{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    margin-left: 10%;
+}
+.books{
+    margin-left: 10%;
 }

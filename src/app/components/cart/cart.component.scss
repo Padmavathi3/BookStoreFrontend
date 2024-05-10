@@ -1,0 +1,60 @@
+.cart-book-container {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px; /* Add margin between book containers */
+    display: flex; /* Use flexbox to control layout */
+    justify-content: space-between; /* Align items at the start and end */
+    align-items: center; /* Vertically center items */
+}
+
+.cart-book-image {
+    display: flex;
+    gap: 7%;
+}
+
+.cart-book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.cart-book-details span:first-child {
+    white-space: nowrap; /* Prevent line breaks */
+}
+.buttons {
+    display: flex;
+    gap: 30px;
+    align-self: flex-end; /* Align buttons to the end */
+}
+
+button {
+    background-color: blue;
+    color: white;
+}
+
+.back-to-dashbaord a h3 {
+    text-decoration: none;
+    margin-left: 10%;
+}
+
+.book-cnt {
+    width: 80%; /* Adjust width as needed */
+    margin: 0 auto; /* Center the container */
+}
+
+.heading-maps {
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 10px;
+}
+
+.maps {
+    border: 1px solid black;
+    margin-right: 20px;
+    padding: 3px;
+}
+
+.content{
+  margin-left: 10%;
+}   

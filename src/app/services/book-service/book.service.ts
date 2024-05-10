@@ -9,16 +9,30 @@ import { BookObj } from 'src/assets/booksInterface';
 export class BookService {
   private bookobj  =new BehaviorSubject<BookObj>({});
   currentstate=this.bookobj.asObservable();
-  changeState(value:BookObj)
-  {
-    this.bookobj.next(value)
-  }
+  private cartItems:BookObj[]=[]
 
   constructor(private httpService:HttpService) { }
 
   getAllBooksCall()
   {
     return this.httpService.getAllBooksApi("/Books/GetAllBooks")
+  }
+
+  changeState(value:BookObj)
+  {
+    this.bookobj.next(value)
+  }
+
+  addToCart(book: BookObj) {
+    this.cartItems.push(book);
+  }
+
+  removeFromCart(book: BookObj) {
+    this.cartItems = this.cartItems.filter(item => item !== book);
+  }
+
+  getCartItems(): BookObj[] {
+    return this.cartItems;
   }
 }
 

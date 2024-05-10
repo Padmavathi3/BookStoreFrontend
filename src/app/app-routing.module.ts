@@ -4,11 +4,13 @@ import { BooksContainerComponent } from './components/books-container/books-cont
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BookComponent } from './components/book/book.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   {path:'dashboard',component:DashboardComponent,children:[
      {path:'books',component:BooksContainerComponent},
-     {path:'bookdetails',component:BookDetailsComponent}]}
+     {path:'bookdetails',component:BookDetailsComponent},
+     {path:'cart',component:CartComponent}]}
   
 ];
 

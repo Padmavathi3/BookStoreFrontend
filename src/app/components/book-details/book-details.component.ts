@@ -10,6 +10,8 @@ import { BookObj } from 'src/assets/booksInterface';
 export class BookDetailsComponent implements OnInit {
 
   selectedBook!: BookObj;
+  addedToBag:boolean=false;
+  count:number=1;
 
   constructor(private bookService: BookService) { }
 
@@ -17,7 +19,21 @@ export class BookDetailsComponent implements OnInit {
     this.bookService.currentstate.subscribe(res => {
       this.selectedBook = res;
     });
-    this.bookService.currentstate.subscribe(res=>console.log(res));
     
+  }
+
+  addToBag() {
+    this.addedToBag = true;
+    this.bookService.addToCart(this.selectedBook);
+  }
+
+  increaseCount() {
+    this.count++;
+  }
+
+  decreaseCount() {
+    if (this.count > 1) {
+      this.count--;
+    }
   }
 }

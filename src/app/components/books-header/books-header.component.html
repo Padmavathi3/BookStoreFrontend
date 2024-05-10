@@ -14,22 +14,22 @@
     </div>
 
     <div class="cart">
-    <mat-icon class="cart-icon" svgIcon="cart-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+    <mat-icon class="cart-icon" svgIcon="cart-icon" aria-hidden="false" aria-label="Search SVG icon" (click)="handleCart()"></mat-icon>
     <span>Cart</span>
     </div>
    
 </div>
 <mat-menu #ProfileMenu="matMenu">
     <div class="profile-history">
-    <button mat-button>Delete Note</button>
-    <button mat-button>Add Label</button>
-    <button mat-button>Add Drawing</button>
-    <button mat-button>Make a Copy</button>
-    <button mat-button>Show Tick Boxes</button>
-    <button mat-button>Copy to Google docs</button>
-    <button mat-button>Version History</button>
+        <span>Welcome</span>
+        <span>To access account and manage orders</span>
+        <div class="login-signup">
+            <button mat-button (click)="login()">LOGIN/SIGNUP</button>
+            <div class="order-icon"> My Orders</div>
+            <div class="heart-icon">&#x2764; Wishlist</div>
+        </div>
     </div>
-</mat-menu>   
+</mat-menu>    
 <div>
     <router-outlet></router-outlet>
 </div>

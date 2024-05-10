@@ -1,0 +1,30 @@
+<div class="cartdetails-outer-cnt">
+    <div class="back-to-dashbaord">
+        <a routerLink="/dashboard/books"><h3>Home</h3></a>
+    </div>
+    <div *ngIf="cartItems.length > 0" class="book-cnt">
+        <div class="heading-maps">
+            <span>My Cart</span>
+            <span class="maps"><mat-icon class="search-icon" svgIcon="location-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+                Use Current Location</span>
+        </div>
+        <div *ngFor="let item of cartItems" class="cart-book-container">
+            <div class="cart-book-image">
+                <img src="{{item.bookImage}}" height="100px" width="100px">
+                <div class="cart-book-details">
+                    <span style="font-size: 15px;"><b>{{item.bookName}}</b></span>
+                    <span>{{item.authorName}}</span>
+                    <span style="font-size: 15px;"><b>Rs. {{item.price}}</b></span>
+                    <span>{{item.quantity}}</span>
+                </div>
+            </div>
+            <div class="buttons">
+                <button mat-flat-button class="cart-button" (click)="removeFromCart(item)">Remove</button>
+                <button mat-flat-button class="wishlist-button"> Place Order</button>
+            </div>  
+        </div>  
+    </div>
+    <div *ngIf="cartItems.length === 0" class="empty-cart">
+        <span class="content">Your cart is empty</span>
+    </div>
+</div>

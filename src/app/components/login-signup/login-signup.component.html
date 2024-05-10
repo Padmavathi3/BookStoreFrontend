@@ -1,0 +1,14 @@
+<div class="login-signup-main-cnt">
+    <div class="img-object">
+        <img class="image" src="assets/images/cart.png" alt="" srcset="" height="245px" width="245px">
+        <p class="title">ONLINE &nbsp;BOOK &nbsp;SHOPPING</p>
+    </div>
+    <div class="login-signup-cnt">
+        <div class="login-signup">
+            <a (click)="goToLogin()" [ngClass]="{'active':login}"><b>LOGIN</b></a>
+            <a (click)="goToSignUp()" [ngClass]="{'active': !login}"><b>SIGNUP</b></a>
+        </div>
+        <app-login *ngIf="login"></app-login>
+        <app-signup *ngIf="!login"></app-signup>
+    </div>
+</div>
