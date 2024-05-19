@@ -3,22 +3,21 @@
     <img src="assets/images/Book1.png" alt=""> -->
     <div *ngFor="let book of BookObjList" class="book-cnt" >
         <div class="book-image-background-cnt" (click)="handleBook(book)">
-            <img src="{{book?.bookImage}}" class="book-image">
+            <img src="{{book?.BookImage}}" class="book-image">
         </div>
 
         <div class="book-details">
-            <span><b>{{book?.bookName}}</b></span>
+            <span><b>{{book?.BookName}}</b></span>
         
         
-            <span>{{book?.authorName}}</span>
+            <span>{{book?.AuthorName}}</span>
         
         <div class="rating-quantity">
-         <span class="rating">4.5 &#9733;</span>
-         
-         <span>{{book?.quantity}}</span>
+         <span class="rating">4.5 &#9733;</span>  
+         <span>(20)</span>
         </div>
        
-            <span><b>Rs. {{book?.price}}</b></span>
+            <span><b>Rs. {{book?.Price}}</b></span>
        
        </div>
         

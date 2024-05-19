@@ -1,35 +1,37 @@
 <div class="header-main-cnt">
-    
     <img src="assets/images/education.png" alt="Image not found">
     <h3 class="title">BookStore</h3>
-
+  
     <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search...">
-        <mat-icon class="search-icon" svgIcon="search-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+      <input type="text" class="search-input" placeholder="Search...">
+      <mat-icon class="search-icon" svgIcon="search-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
     </div>
-
+  
     <div class="profile">
-    <mat-icon class="profile-icon" [matMenuTriggerFor]="ProfileMenu" svgIcon="profile-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
-    <span>Profile</span>
+      <mat-icon class="profile-icon" [matMenuTriggerFor]="ProfileMenu" svgIcon="profile-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+      <span>Profile</span>
     </div>
-
+  
     <div class="cart">
-    <mat-icon class="cart-icon" svgIcon="cart-icon" aria-hidden="false" aria-label="Search SVG icon" (click)="handleCart()"></mat-icon>
-    <span>Cart</span>
+      <mat-icon class="cart-icon" svgIcon="cart-icon" aria-hidden="false" aria-label="Search SVG icon" (click)="handleCart()"></mat-icon>
+      <span>Cart</span>
     </div>
-   
-</div>
-<mat-menu #ProfileMenu="matMenu">
+  </div>
+  
+  <mat-menu #ProfileMenu="matMenu">
     <div class="profile-history">
-        <span>Welcome</span>
-        <span>To access account and manage orders</span>
-        <div class="login-signup">
-            <button mat-button (click)="login()">LOGIN/SIGNUP</button>
-            <div class="order-icon"> My Orders</div>
-            <div class="heart-icon">&#x2764; Wishlist</div>
-        </div>
+      <span>Welcome</span>
+      <span>To access account and manage orders</span>
+      <div class="login-signup">
+        <button mat-button *ngIf="!isLoggedIn" (click)="login()">LOGIN/SIGNUP</button>
+        <button mat-button *ngIf="isLoggedIn" (click)="logout()">LOGOUT</button>
+        <div *ngIf="isLoggedIn" class="order-icon"> My Orders</div>
+        <div *ngIf="isLoggedIn" class="heart-icon">&#x2764; Wishlist</div>
+      </div>
     </div>
-</mat-menu>    
-<div>
+  </mat-menu>   
+  
+  <div>
     <router-outlet></router-outlet>
-</div>
+  </div>
+  

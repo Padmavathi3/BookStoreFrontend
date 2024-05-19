@@ -6,7 +6,7 @@
   <div *ngIf="selectedBook" class="book-details-cnt">
     <div class="book-image-and-options">
       <div class="book-image">
-        <img [src]="selectedBook.bookImage" height="300px" width="220px">
+        <img [src]="selectedBook.BookImage" height="300px" width="220px">
       </div>
       <div class="options">
         <button mat-flat-button *ngIf="!addedToBag" class="cart-button" (click)="addToBag()">ADD TO BAG</button>
@@ -21,13 +21,13 @@
     </div>
 
     <div class="book-details">
-      <span><h2>{{selectedBook.bookName}}</h2></span>
-      <span>{{selectedBook.authorName}}</span>
+      <span><h2>{{selectedBook.BookName}}</h2></span>
+      <span>{{selectedBook.AuthorName}}</span>
       <div class="rating-quantity">
         <span class="rating">4.5 &#9733;</span>
-        <span>{{selectedBook.quantity}}</span>
+        <span>(20)</span>
       </div>
-      <span><b>Rs. {{selectedBook.price}}</b></span>
+      <span><b>Rs. {{selectedBook.Price}}</b></span>
       <hr>
       <span><b>Book Description</b></span>
       <span>"Don't Make Me Think" is a book written by Steve Krug that emphasizes simplicity and usability in web design. It advocates for intuitive navigation and clear communication to reduce cognitive load for users. The book is a seminal work in the field of user experience design, offering practical insights for creating user-friendly websites and interfaces.</span>

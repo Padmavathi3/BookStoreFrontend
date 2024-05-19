@@ -8,6 +8,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class LoginSignupComponent implements OnInit {
 
+  login = true;
+
   constructor(public dialogRef: MatDialogRef<LoginSignupComponent>) { }
 
   ngOnInit(): void {
@@ -16,12 +18,12 @@ export class LoginSignupComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-login=true;
-goToLogin(){
- this.login=true;
-}
-goToSignUp(){
- this.login=false;
-}
 
+  goToLogin() {
+    this.login = true;
+  }
+
+  goToSignUp() {
+    this.login = false;
+  }
 }

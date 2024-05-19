@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
 
@@ -7,6 +7,12 @@ import { Observable} from 'rxjs';
 })
 export class HttpService {
   private baseUrl:string="https://localhost:7112/api"
+
+  private authHeader = new HttpHeaders({
+   
+    Authorization: `Bearer ${localStorage.getItem('AuthToken')}`
+  })
+  
   constructor(private http:HttpClient){}
 
   loginApi(email: string, password: string) : Observable<any>{
@@ -24,4 +30,19 @@ export class HttpService {
       return this.http.get(this.baseUrl+endpoint)
   }
   
+  addToCartApi(endpoint:string,body:{bookId:any,quantity:any} ):Observable<any>
+  {
+    return this.http.post(this.baseUrl+endpoint,body,{headers: this.authHeader})
+  }
+  getAllCartApi(endpoint:string):Observable<any>
+  {
+    return this.http.get(this.baseUrl+endpoint,{headers: this.authHeader})
+  }
+  removebookFromCartApi(endpoint:string):Observable<any>{
+    return this.http.delete(this.baseUrl+endpoint,{headers: this.authHeader})
+  }
+  updateQuantityApi(endpoint:string):Observable<any>
+  {
+    return this.http.patch(this.baseUrl+endpoint,{},{headers:this.authHeader})
+  }
 }

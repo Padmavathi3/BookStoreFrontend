@@ -35,12 +35,12 @@ button {
 
 .back-to-dashbaord a h3 {
     text-decoration: none;
-    margin-left: 10%;
+    margin-left: 15%;
 }
 
 .book-cnt {
-    width: 80%; /* Adjust width as needed */
-    margin: 0 auto; /* Center the container */
+    width: 62%; /* Adjust width as needed */
+    margin-left: 15%;
 }
 
 .heading-maps {
@@ -58,3 +58,92 @@ button {
 .content{
   margin-left: 10%;
 }   
+
+.order-address{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px; /* Add margin between book containers */
+    display: flex; /* Use flexbox to control layout */
+    flex-direction: column;
+    width: 60%; /* Adjust width as needed */
+    height:auto;
+    margin-left: 15%;
+}
+.address-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+ 
+}
+
+.add-new-address{
+    height:10%;
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+}
+
+.name-number-fields, .city-state-fields{
+    display: flex;
+    flex-direction: row;
+    gap:15%;
+}
+.name, .number, .city, .state {
+    display: flex;
+    flex-direction: column;
+    width: 45%; /* Set width for the form field containers */
+}
+
+mat-form-field {
+    width: 80%; /* Ensure mat-form-field takes full width of its container */
+}
+
+.address, .type{
+    display: flex;
+    flex-direction: column;
+}
+.address-textarea{
+    height: 80px;
+    width: 50%;
+}
+.type-buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+}
+.sumbit-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.order-summary{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px; /* Add margin between book containers */
+    display: flex; /* Use flexbox to control layout */
+    flex-direction: column;
+    margin-left: 15%;
+    width: 60%; /* Adjust width as needed */
+    height:auto;
+}
+
+.order-item{
+    display: flex;
+    flex-direction: row;
+    gap:5%;
+}
+.order-item-details{
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.checkout-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+

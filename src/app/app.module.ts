@@ -9,7 +9,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import {ReactiveFormsModule } from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { LoginSignupComponent } from './components/login-signup/login-signup.com
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CartComponent } from './components/cart/cart.component';
+import { OrderComponent } from './components/order/order.component';
 
 
 
@@ -36,7 +38,9 @@ import { CartComponent } from './components/cart/cart.component';
     LoginSignupComponent,
     LoginComponent,
     SignupComponent,
-    CartComponent
+    CartComponent,
+    OrderComponent
+
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,8 @@ import { CartComponent } from './components/cart/cart.component';
     MatDividerModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule
     
   ],
   providers: [],
