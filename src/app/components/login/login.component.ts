@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   get loginControl() {
     return this.loginForm.controls;
   }
+<<<<<<< HEAD
   handleLogin() {
     if (this.loginForm.invalid) return;
   
@@ -50,6 +51,21 @@ export class LoginComponent implements OnInit {
       },
       (err) => console.log('Login error:', err)
     );
+=======
+
+  handleLogin(){
+    console.log(this.loginControl);
+     if(this.loginForm.invalid) return
+     const {email, password} = this.loginForm.value
+
+     this.userService.loginCall(email, password).subscribe((res) => {
+       console.log(res)
+       localStorage.setItem("AuthToken", res.data)
+      
+    },
+      (err) => console.log(err)
+    )
+>>>>>>> 6d815bdafa78d3cf6926c7850768b2bb8a2fe6d1
   }
   
 }
