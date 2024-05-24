@@ -24,6 +24,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderComponent } from './components/order/order.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 
 
@@ -39,7 +41,9 @@ import { OrderComponent } from './components/order/order.component';
     LoginComponent,
     SignupComponent,
     CartComponent,
-    OrderComponent
+    OrderComponent,
+    WishlistComponent,
+    OrderDetailsComponent
 
   ],
   imports: [

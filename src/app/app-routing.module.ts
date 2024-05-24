@@ -8,6 +8,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginSignupComponent } from './components/login-signup/login-signup.component';
 import { OrderComponent } from './components/order/order.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 const routes: Routes = [
   { path: 'loginsignup', component: LoginSignupComponent },
@@ -15,7 +17,9 @@ const routes: Routes = [
     { path: 'books', component: BooksContainerComponent },
     { path: 'bookdetails', component: BookDetailsComponent },
     { path: 'cart', component: CartComponent },
-    {path: 'order',component:OrderComponent}
+    {path: 'order/:addressId',component:OrderComponent},
+    {path:'wishlist',component:WishlistComponent},
+    {path:'orderdetails',component:OrderDetailsComponent}
   ]}
 ];
 
