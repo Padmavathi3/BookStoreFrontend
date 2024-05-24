@@ -3,7 +3,7 @@
          <img src="assets/images/order.png" alt="image not found" width="500px" height="270px">
     </div>  
     <div class="order-confirm-message">
-        hurray!!! your order is confirmed the order id is #123456 save the order id for further communication..   
+        hurray!!! your order is confirmed the order id is #{{orderDetail.OrdeId}} save the order id for further communication..   
      </div>  
      <div class="order-information">
           <div class="headings">
@@ -13,9 +13,9 @@
           </div>
           <hr>
           <div class="information">
-           <span>padma@gmail.com</span>
-           <span>8234567893</span>
-           <span>1/7,Bhumayapalli,Khajipet,Kadapa</span>
+           <span>{{orderDetail.Email}}</span>
+           <span>{{orderDetail.MobileNumber}}</span>
+           <span>{{orderDetail.FullAddress}}</span>
           </div>
      </div> 
      <div>

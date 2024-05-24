@@ -1,105 +1,133 @@
 <div class="cartdetails-outer-cnt">
   <div class="back-to-dashbaord">
-      <a routerLink="/dashboard/books"><h3>Home</h3></a>
+    <a routerLink="/dashboard/books"><h3>Home</h3></a>
   </div>
   <div *ngIf="cartItems.length > 0" class="book-cnt">
-      <div class="heading-maps">
-          <span>My Cart</span>
-          <span class="maps">
-              <mat-icon class="location-icon" svgIcon="location-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
-              Use Current Location
-          </span>
+    <div class="heading-maps">
+      <span>My Cart</span>
+      <span class="maps">
+        <mat-icon class="location-icon" svgIcon="location-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+        Use Current Location
+      </span>
+    </div>
+    <div *ngFor="let item of cartItems" class="cart-book-container">
+      <div class="cart-book-image">
+        <img [src]="item.BookImage" height="100px" width="100px">
+        <div class="cart-book-details">
+          <span style="font-size: 15px;"><b>{{item.BookName}}</b></span>
+          <span>{{item.AuthorName}}</span>
+          <span style="font-size: 15px;"><b>Rs. {{item.Price * item.Quantity}}</b></span>
+          <span>{{item.Quantity}}</span>
+        </div>
       </div>
-      <div *ngFor="let item of cartItems" class="cart-book-container">
-          <div class="cart-book-image">
-              <img src="{{item.BookImage}}" height="100px" width="100px">
-              <div class="cart-book-details">
-                  <span style="font-size: 15px;"><b>{{item.BookName}}</b></span>
-                  <span>{{item.AuthorName}}</span>
-                  <span style="font-size: 15px;"><b>Rs. {{item.Price * item.Quantity}}</b></span>
-                  <span>{{item.Quantity}}</span>
-              </div>
-          </div>
-          <div class="buttons">
-              <button mat-flat-button class="cart-button" (click)="removeFromCart(item)">Remove</button>
-              <button mat-flat-button class="wishlist-button" (click)="placeOrder(item)">Place Order</button>
-          </div>
+      <div class="buttons">
+        <button mat-flat-button class="cart-button" (click)="removeFromCart(item)">Remove</button>
+        <button mat-flat-button class="wishlist-button" (click)="placeOrder(item)">Place Order</button>
       </div>
-  </div>
-  <div *ngIf="showOrderAddress" class="order-address">
+    </div>
+    <div class="showcustomerDetails">
       <div class="address-heading">
-          <h3>Customer Details</h3>
-          <button mat-flat-button class="add-new-address">Add New Address</button>
+        <h3>Customer Details</h3>
+        <button mat-flat-button class="add-new-address" (click)="AddNewAddress = true">Add New Address</button>
       </div>
+      <div *ngIf="showAddressDetails" class="customerDetail">
+        <div *ngIf="customerAddresses.length > 0; else noAddress">
+          <div *ngFor="let address of customerAddresses" class="addressDetails">
+            <div class="address-info">
+              <span><b>Customer Name: </b>{{ address.CustomerName }}</span>
+              <span><b>Mobile Number: </b>{{ address.MobileNumber }}</span>
+              <span><b>Full Address: </b>{{ address.FullAddress }}</span>
+              <span><b>City: </b>{{ address.City }}</span>
+              <span><b>State: </b>{{ address.State }}</span>
+              <span><b>Type: </b>{{ address.Type }}</span>
+              <br>
+            </div>
+            <div class="address-buttons">
+              <button mat-flat-button class="editAddress" (click)="editAddress(address)">EDIT</button>
+              <button mat-flat-button class="removeAddress" (click)="removeAddress(address.MobileNumber || 0)">REMOVE</button>
+              <button mat-flat-button class="continuewithThisAddress" (click)="continueWithAddress(address)">CONTINUE</button>
+            </div>
+          </div>
+        </div>
+        <ng-template #noAddress>
+          <p>No addresses are present. Create new address.</p>
+        </ng-template>
+      </div>
+    </div>
+    <div class="showOrderSummery">
+      <h3>Order Summary</h3>
+    </div>
+  </div>
+  <div class="order-address" *ngIf="AddNewAddress">
+    <form [formGroup]="addressForm">
       <div class="name-number-fields">
-          <div class="name">
-              <label><b>Full Name</b></label>
-              <mat-form-field appearance="outline" class="input">
-                  <mat-label>Name</mat-label>
-                  <input matInput placeholder="Enter Name" formControlName="name">
-              </mat-form-field>
-          </div>
-          <div class="number">
-              <label><b>Mobile Number</b></label>
-              <mat-form-field appearance="outline" class="input">
-                  <mat-label>Mobile Number</mat-label>
-                  <input matInput placeholder="Enter mobile number" formControlName="number">
-              </mat-form-field>
-          </div>
+        <div class="name">
+          <label><b>Full Name</b></label>
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter Name" formControlName="CustomerName">
+          </mat-form-field>
+        </div>
+        <div class="number">
+          <label><b>Mobile Number</b></label>
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput placeholder="Enter mobile number" formControlName="MobileNumber">
+          </mat-form-field>
+        </div>
       </div>
       <div class="address">
-          <b>Address</b>
-          <textarea class="address-textarea"></textarea>
+        <b>Address</b>
+        <textarea class="address-textarea" formControlName="FullAddress"></textarea>
       </div><br>
       <div class="city-state-fields">
-          <div class="city">
-              <label><b>City/Town</b></label>
-              <mat-form-field appearance="outline" class="input">
-                  <mat-label>City</mat-label>
-                  <input matInput placeholder="Enter City" formControlName="city">
-              </mat-form-field>
-          </div>
-          <div class="state">
-              <label><b>State</b></label>
-              <mat-form-field appearance="outline" class="input">
-                  <mat-label>State</mat-label>
-                  <input matInput placeholder="Enter state" formControlName="state">
-              </mat-form-field>
-          </div>
+        <div class="city">
+          <label><b>City/Town</b></label>
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="Enter City" formControlName="City">
+          </mat-form-field>
+        </div>
+        <div class="state">
+          <label><b>State</b></label>
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>State</mat-label>
+            <input matInput placeholder="Enter state" formControlName="State">
+          </mat-form-field>
+        </div>
       </div>
       <div class="type">
-          <b>Type</b><br>
-          <mat-radio-group formControlName="type" class="type-buttons">
-              <mat-radio-button value="work">Work</mat-radio-button>
-              <mat-radio-button value="home">Home</mat-radio-button>
-              <mat-radio-button value="other">Other</mat-radio-button>
-          </mat-radio-group>
+        <b>Type</b><br>
+        <mat-radio-group formControlName="Type" class="type-buttons">
+          <mat-radio-button value="work">Work</mat-radio-button>
+          <mat-radio-button value="home">Home</mat-radio-button>
+          <mat-radio-button value="other">Other</mat-radio-button>
+        </mat-radio-group>
       </div><br>
       <div class="submit-button">
-          <button mat-flat-button class="continue-button" (click)="continueOrder()">CONTINUE</button>
+        <button mat-flat-button class="continue-button" (click)="continueOrder()">{{ isEditing ? 'Update Address' : 'Add Address' }}</button>
       </div>
+    </form>
   </div>
   <div class="order-summary" *ngIf="showOrderSummary">
-
-          <h3>Order Summary</h3>
-          <div class="order-item" *ngIf="selectedBook">
-              <div class="order-item-image">
-                  <img [src]="selectedBook.BookImage" height="100px" width="100px">
-              </div>
-              <div class="order-item-details">
-                  <span><b>{{selectedBook?.BookName}}</b></span>
-                  <span>{{selectedBook?.AuthorName}}</span>
-                  <span>Price: Rs. {{selectedBook?.Price}}</span> 
-                  <span>Quantity: {{selectedBook?.Quantity}}</span>
-                  <span>Total Price: Rs. {{selectedBook?.Price * selectedBook?.Quantity}}</span>
-              </div>
-          </div>
-          <div class="checkout-button"> 
-            <button mat-flat-button  (click)="handleCheckOut()">CHECKOUT</button> 
-          </div>
-  
+    <h3>Order Summary</h3>
+    <div class="order-item" *ngIf="selectedBook">
+      <div class="order-item-image">
+        <img [src]="selectedBook.BookImage" height="100px" width="100px">
+      </div>
+      <div class="order-item-details">
+        <span><b>{{selectedBook?.BookName}}</b></span>
+        <span>{{selectedBook?.AuthorName}}</span>
+        <span>Price: Rs. {{selectedBook?.Price}}</span>
+        <span>Quantity: {{selectedBook?.Quantity}}</span>
+        <span>Total Price: Rs. {{selectedBook?.Price! * selectedBook?.Quantity! || 0}}</span>
+      </div>
+    </div>
+    <div class="checkout-button">
+      <button mat-flat-button (click)="handleCheckOut()">CHECKOUT</button>
+    </div>
   </div>
   <div *ngIf="cartItems.length === 0" class="empty-cart">
-      <span class="content">Your cart is empty</span>
+    <span class="content">Your cart is empty</span>
   </div>
 </div>

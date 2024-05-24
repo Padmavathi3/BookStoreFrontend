@@ -13,7 +13,7 @@ import { LoginSignupComponent } from '../login-signup/login-signup.component';
   styleUrls: ['./books-header.component.scss']
 })
 export class BooksHeaderComponent implements OnInit {
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean = true;
 
   constructor(private domSanitizer: DomSanitizer, private matIconRegistry: MatIconRegistry, private dialog: MatDialog, private router: Router) {
     matIconRegistry.addSvgIconLiteral("search-icon", domSanitizer.bypassSecurityTrustHtml(SEARCH_ICON));
@@ -22,24 +22,37 @@ export class BooksHeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!localStorage.getItem('AuthToken');
+    // this.isLoggedIn = !!localStorage.getItem('AuthToken');
+    if(localStorage.getItem('AuthToken')!==null)
+      {
+        this.isLoggedIn=false
+      }
+    else{
+      this.isLoggedIn=true
+    }
   }
-
+  
   login() {
     const dialogRef = this.dialog.open(LoginSignupComponent, { width: '720px', height: '480px' });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.isLoggedIn = !!localStorage.getItem('AuthToken'); // Check token again after login dialog closes
+      
     });
   }
 
   logout() {
     // Clear the authentication token or any login state
     localStorage.removeItem('AuthToken');
-    this.isLoggedIn = false;
+    
   }
 
   handleCart() {
     this.router.navigate(["/dashboard/cart"]);
+  }
+  handleWishlist(){
+    this.router.navigate(["/dashboard/wishlist"]);
+  }
+  handleOrderDetails(){
+    this.router.navigate(["/dashboard/orderdetails"]);
   }
 }

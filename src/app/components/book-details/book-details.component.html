@@ -1,8 +1,10 @@
+<!-- bookdetails.component.html -->
+
 <div class="bookdetails-outer-cnt">
   <div class="back-to-dashbaord">
     <a routerLink="/dashboard/books"><h3>Home</h3></a>
   </div>
-  
+
   <div *ngIf="selectedBook" class="book-details-cnt">
     <div class="book-image-and-options">
       <div class="book-image">
@@ -15,8 +17,7 @@
           <span class="number-of-books">{{ count }}</span>
           <span class="symbol" (click)="increaseCount()">+</span>
         </div>
-        
-        <button mat-flat-button class="wishlist-button"> WISHLIST</button>
+        <button mat-flat-button class="wishlist-button" (click)="addToWishlist()"> WISHLIST</button>
       </div>
     </div>
 
@@ -33,7 +34,7 @@
       <span>"Don't Make Me Think" is a book written by Steve Krug that emphasizes simplicity and usability in web design. It advocates for intuitive navigation and clear communication to reduce cognitive load for users. The book is a seminal work in the field of user experience design, offering practical insights for creating user-friendly websites and interfaces.</span>
       <hr>
       <span><b>Customer FeedBack</b></span>
-      <span class="stars">  &#9733; &#9733; &#9733; &#9733;&#9733;</span>
+      <span class="stars"> &#9733; &#9733; &#9733; &#9733;&#9733;</span>
     </div>
   </div>
 </div>

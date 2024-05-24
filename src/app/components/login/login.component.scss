@@ -38,9 +38,9 @@
 
 .social-buttons {
     display: flex;
-    justify-content: center; /* Changed to center */
+    justify-content: center; 
     margin-top: -5px;
-    margin-left: auto; /* Changed to auto */
+    margin-left: auto; 
     gap:20px;
 }
 
@@ -58,7 +58,7 @@
 .google-button,
 .facebook-button {
     padding: 10px 20px;
-    background-color: #4285f4; /* Google Blue */
+    background-color: #4285f4; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -66,5 +66,5 @@
 }
 
 .facebook-button {
-    background-color: #3b5998; /* Facebook Blue */
+    background-color: #3b5998; 
 }

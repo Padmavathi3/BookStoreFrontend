@@ -1,0 +1,47 @@
+.wishlist-book-container {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.wishlist-book-image {
+    display: flex;
+    gap: 7%;
+}
+
+.wishlist-book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.cart-book-details span:first-child {
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+button {
+    background-color: blue;
+    color: white;
+}
+
+.back-to-dashbaord a h3 {
+    text-decoration: none;
+    margin-left: 15%;
+}
+
+.book-cnt {
+    width: 62%; 
+    margin-left: 15%;
+}
+
+
+.content{
+  margin-left: 10%;
+}   
+
+
+

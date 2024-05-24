@@ -19,16 +19,24 @@
   </div>
   
   <mat-menu #ProfileMenu="matMenu">
-    <div class="profile-history">
+    <div class="profile-history" *ngIf="isLoggedIn">
       <span>Welcome</span>
       <span>To access account and manage orders</span>
       <div class="login-signup">
-        <button mat-button *ngIf="!isLoggedIn" (click)="login()">LOGIN/SIGNUP</button>
-        <button mat-button *ngIf="isLoggedIn" (click)="logout()">LOGOUT</button>
-        <div *ngIf="isLoggedIn" class="order-icon"> My Orders</div>
-        <div *ngIf="isLoggedIn" class="heart-icon">&#x2764; Wishlist</div>
+        <button mat-button  (click)="login()">LOGIN/SIGNUP</button>
+        <div class="order-icon" (click)="handleOrderDetails()"> My Orders</div>
+        <div class="heart-icon" (click)="handleWishlist()">&#x2764; Wishlist</div>
       </div>
-    </div>
+    </div> 
+    <div *ngIf="!isLoggedIn">
+    <div class="login-signin">
+      <span>Hello Padmavathi,</span>
+      <div class="profile-icon">Profile</div>
+      <div class="order-icon" (click)="handleOrderDetails()">My Orders</div>
+      <div class="wishlist" (click)="handleWishlist()">&#x2764;My Wishlist</div>
+      <button mat-button (click)="logout()">LOGOUT</button>
+  </div>
+  </div>
   </mat-menu>   
   
   <div>

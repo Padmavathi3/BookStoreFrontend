@@ -8,7 +8,7 @@ import { BookObj } from 'src/assets/booksInterface';
   styleUrls: ['./books-container.component.scss']
 })
 export class BooksContainerComponent implements OnInit {
-  booksList: BookObj[] = []; // Corrected variable name and initialization syntax
+  booksList: BookObj[] = []; 
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {

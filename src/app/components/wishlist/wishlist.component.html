@@ -1,0 +1,29 @@
+<div class="wishlistdetails-outer-cnt">
+    <div class="back-to-dashbaord">
+        <a routerLink="/dashboard/books"><h3>Home</h3></a>
+    </div>
+    <div *ngIf="wishlistItems.length > 0" class="book-cnt">
+        <div>
+            <span>My OrderList</span>
+        </div>
+        <div *ngFor="let item of wishlistItems" class="wishlist-book-container">
+            <div class="wishlist-book-image">
+                <img src="{{item.BookImage}}" height="100px" width="100px">
+                <div class="wishlist-book-details">
+                    <span style="font-size: 15px;"><b>{{item.BookName}}</b></span>
+                    <span>{{item.AuthorName}}</span>
+                    <span style="font-size: 15px;"><b>Rs. {{item.Price}}</b></span>
+                </div>
+            </div>
+            <div class="buttons">
+                <button mat-flat-button class="remove-button" (click)="removeFromWishlist(item)">Remove</button>
+                
+            </div>
+        </div>
+    </div>
+   
+    <div *ngIf="wishlistItems.length === 0" class="empty-cart">
+        <span class="content">Your wishlist is empty</span>
+    </div>
+  </div>
+  

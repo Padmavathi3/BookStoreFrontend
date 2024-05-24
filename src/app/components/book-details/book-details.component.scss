@@ -80,10 +80,10 @@
 }
 
 .wishlist-button::before {
-    font-size: 24px; /* Increase the font size for the heart symbol */
-    vertical-align: middle; /* Align the heart symbol vertically */
-    content: '\2665'; /* Unicode character for heart symbol */
-    margin-right: 10px; /* Add some spacing between the heart symbol and text */
+    font-size: 24px; 
+    vertical-align: middle; 
+    content: '\2665'; 
+    margin-right: 10px; 
 }
 .book-details{
     display: flex;
@@ -107,17 +107,16 @@
 
 .book-details h2,
 .book-details h3 {
-    margin: 0; /* Remove default margin for heading elements */
+    margin: 0; 
 }
 
-/* For horizontal line */
 .book-details hr {
    
     border-top: 1px solid black;
-    margin: 20px 0; /* Adjust margin as needed */
+    margin: 20px 0; 
   }
   
-  /* For stars */
+
   .stars {
     font-size: 24px;
     outline-color:black ;

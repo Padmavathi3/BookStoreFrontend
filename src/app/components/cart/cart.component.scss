@@ -1,5 +1,5 @@
-.cart-book-container {
-    border: 2px solid black;
+.cart-book-container,.showcustomerDetails {
+    border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 20px; /* Add margin between book containers */
@@ -70,12 +70,7 @@ button {
     height:auto;
     margin-left: 15%;
 }
-.address-heading{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
- 
-}
+
 
 .add-new-address{
     height:10%;
@@ -125,6 +120,7 @@ mat-form-field {
     margin-bottom: 20px; /* Add margin between book containers */
     display: flex; /* Use flexbox to control layout */
     flex-direction: column;
+    flex-direction: column;
     margin-left: 15%;
     width: 60%; /* Adjust width as needed */
     height:auto;
@@ -146,4 +142,52 @@ mat-form-field {
     flex-direction: row;
     justify-content: flex-end;
 }
+.showcustomerDetails {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.address-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%; 
+}
+
+.customerDetail
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%; 
+}
+.addressDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.address-info{
+    display: flex;
+    flex-direction: column;
+}
+.address-buttons{
+    display: flex;
+    flex-direction: row;
+}
+.editAddress,.removeAddress,.continuewithThisAddress{
+    border: 1px solid;
+    color: red;
+    background-color: white;
+    height: 50px;
+    
+}
+
 
