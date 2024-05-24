@@ -10,13 +10,13 @@ export class CartService {
 
   constructor(private httpService: HttpService) { }
 
-  addToCartApiCall(data: { bookId: any, quantity: any }) {
-    return this.httpService.addToCartApi("/Cart/AddBookToCart", data);
+  addToCartApiCall(data: { bookId: any, quantity: any },token?:string) {
+    return this.httpService.addToCartApi("/Cart/AddBookToCart", data,token);
   }
 
-  getAllCartApi() {
-    return this.httpService.getAllCartApi("/Cart/GetAllcarts");
-  }
+  getAllCartApi(token?:string) {
+    return this.httpService.getAllCartApi("/Cart/GetAllcarts",token);
+    }
 
   isBookInCart(bookId: number): Observable<boolean> {
     return new Observable(observer => {
@@ -34,7 +34,7 @@ export class CartService {
     return this.httpService.removebookFromCartApi(`/Cart/DeleteBook?bookId=${encodeURIComponent(bookId)}`);
   }
 
-  updateQuantityCall(bookId: number, quantity: number) {
-    return this.httpService.updateQuantityApi(`/Cart/UpdateQuantity?bookId=${bookId}&quantity=${quantity}`);
+  updateQuantityCall(bookId: number, quantity: number,token?:string) {
+    return this.httpService.updateQuantityApi(`/Cart/UpdateQuantity?bookId=${bookId}&quantity=${quantity}`,token);
   }
 }

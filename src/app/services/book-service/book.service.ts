@@ -10,7 +10,7 @@ export class BookService {
   private bookobj = new BehaviorSubject<BookObj>({});
   currentstate = this.bookobj.asObservable();
   private cartItems: BookObj[] = [];
-  private temp:number=0
+  private wishlistItems: BookObj[] = [];
 
   constructor(private httpService: HttpService) { }
 
@@ -22,6 +22,7 @@ export class BookService {
     this.bookobj.next(value);
   }
 
+  // Cart methods
   addToCart(book: BookObj) {
     this.cartItems.push(book);
   }
@@ -46,11 +47,24 @@ export class BookService {
   updateLocalCartQuantity(bookId: number, quantity: number) {
     const book = this.cartItems.find(item => item.BookId === bookId);
     if (book) {
-      this.temp=book.Quantity||0
-      console.log("temp:"+this.temp);
-      book.Quantity = this.temp+quantity;
-      console.log("quantity"+book.Quantity);
-      
+      book.Quantity = (book.Quantity || 0) + quantity;
     }
+  }
+
+  // Wishlist methods
+  getWishlistItems(): BookObj[] {
+    return this.wishlistItems;
+  }
+
+  isBookInWishlist(book: BookObj): boolean {
+    return this.wishlistItems.some(item => item.BookId === book.BookId);
+  }
+
+  addToWishlist(book: BookObj) {
+    this.wishlistItems.push(book);
+  }
+
+  removeFromWishlist(book: BookObj) {
+    this.wishlistItems = this.wishlistItems.filter(item => item !== book);
   }
 }
