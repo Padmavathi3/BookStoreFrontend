@@ -1,40 +1,97 @@
-<!-- bookdetails.component.html -->
 
-<div class="bookdetails-outer-cnt">
-  <div class="back-to-dashbaord">
-    <a routerLink="/dashboard/books"><h3>Home</h3></a>
-  </div>
-
-  <div *ngIf="selectedBook" class="book-details-cnt">
-    <div class="book-image-and-options">
-      <div class="book-image">
-        <img [src]="selectedBook.BookImage" height="300px" width="220px">
-      </div>
-      <div class="options">
-        <button mat-flat-button *ngIf="!addedToBag" class="cart-button" (click)="addToBag()">ADD TO BAG</button>
-        <div *ngIf="addedToBag" class="quantity-update">
-          <span class="symbol" (click)="decreaseCount()">-</span>
-          <span class="number-of-books">{{ count }}</span>
-          <span class="symbol" (click)="increaseCount()">+</span>
+<div class="book-detail-main-cnt">
+    <div class="home-book-text-cnt">
+      <span class="home-text"  routerLink="/dashboard/books">Home/</span>
+      <span class="book-with-quantity-cnt">Book({{selectedBook.BookId}})</span>
+    </div>
+    <div class="img-withtext-main-cnt">
+      <div class="small-img">
+        <div style="width: 44px;height: 54px;border: 1px solid #D1D1D1;border-radius: 0px 1px 1px 1px;">
+          <img style="width: 37px;height: 45px;padding: 4px;" src="https://m.media-amazon.com/images/I/617rPny7-LL._AC_UF1000,1000_QL80_.jpg" alt="">
         </div>
-        <button mat-flat-button class="wishlist-button" (click)="addToWishlist()"> WISHLIST</button>
+        <div style="width: 44px;height: 54px;border: 1px solid #D1D1D1;border-radius: 0px 1px 1px 1px;">
+          <img style="width: 37px;height: 45px;padding: 4px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYE0peAYNpnYWxNmFhMwvPybvZNZp-LaRoxw&s" alt="">
+        </div>
       </div>
-    </div>
-
-    <div class="book-details">
-      <span><h2>{{selectedBook.BookName}}</h2></span>
-      <span>{{selectedBook.AuthorName}}</span>
-      <div class="rating-quantity">
-        <span class="rating">4.5 &#9733;</span>
-        <span>(20)</span>
+      <div class="book-image-main-cnt">
+        <div class="image">
+          <img [src]="selectedBook.BookImage">
+        </div>
+        <div class="add-bag-wishlist-btn-cnt">
+          <button class="addtobag-btn" (click)="addToBag()" *ngIf="!addedToBag">
+            <span class="addtobag-btn-text">ADD TO BAG</span>
+          </button>
+          <div *ngIf="addedToBag" class="quantity-update">
+            <span class="symbol" (click)="decreaseCount()">-</span>
+            <span class="number-of-books">{{ count }}</span>
+            <span class="symbol" (click)="increaseCount()">+</span>
+          </div>
+          <button class="wishlist-btn" (click)="addToWishlist()">
+            <span class="wishlist-btn-text">WISHLIST</span>
+          </button>
+        </div>
       </div>
-      <span><b>Rs. {{selectedBook.Price}}</b></span>
-      <hr>
-      <span><b>Book Description</b></span>
-      <span>"Don't Make Me Think" is a book written by Steve Krug that emphasizes simplicity and usability in web design. It advocates for intuitive navigation and clear communication to reduce cognitive load for users. The book is a seminal work in the field of user experience design, offering practical insights for creating user-friendly websites and interfaces.</span>
-      <hr>
-      <span><b>Customer FeedBack</b></span>
-      <span class="stars"> &#9733; &#9733; &#9733; &#9733;&#9733;</span>
+      <div class="book-metadata-main-cnt">
+        <div class="book-author-name-cnt">
+          <span class="book-name-cnt">{{selectedBook?.BookName}}</span>
+          <span>{{selectedBook?.AuthorName}}</span>
+          <div class="rating1-cnt">
+            <div class="rating-inner-cnt">
+              <span class="rate">4.5</span>
+              <span class="rating-star">&#9733;</span>
+            </div>
+            <span class="rate-k-cnt">(20)</span>
+          </div>
+          <div class="price-cnt">
+            <span class="actual-price"><h2>Rs.{{selectedBook?.Price}}</h2></span>
+            <span><del>Rs 2000</del></span>
+          </div>
+          <hr>
+        </div>
+        <div class="book-desc-cnt">
+          <ul>
+            <li>Book Detail</li>
+            <span class="book-desc">Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though</span>
+          </ul>
+        </div>
+        <hr>
+        <div>
+          <h2>Customer Feedback</h2>
+          <div class="customer-feedback-inner-cnt">
+            <div style="padding: 15px 17px;display: flex;flex-direction: column;">
+              <div>
+                <span class="overall-rating">Overall rating</span>
+              </div>
+              <div class="review-star-cnt">
+                <mat-icon class="star-icon-blank" svgIcon="star-icon-blank" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+                <mat-icon class="star-icon-blank" svgIcon="star-icon-blank" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+                <mat-icon class="star-icon-blank" svgIcon="star-icon-blank" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+                <mat-icon class="star-icon-blank" svgIcon="star-icon-blank" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+                <mat-icon class="star-icon-blank" svgIcon="star-icon-blank" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+              </div>
+              <div>
+                <input type="text" placeholder="write your review" class="input-field">
+              </div>
+              <button class="submit-btn">submit</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="user-review-comment">
+            <span style="width:27px;height: 27px;padding: 10px;border: 1px solid #D1D1D1; border-radius: 100%;">ac</span>
+            <span class="full-name-cnt">Aniket Chile</span>
+            <div class="rating-feedback-cnt">
+              <mat-icon class="star-icon" svgIcon="star-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+              <mat-icon class="star-icon" svgIcon="star-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+              <mat-icon class="star-icon" svgIcon="star-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+              <mat-icon class="star-icon-blank" svgIcon="star-icon-blank" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+              <mat-icon class="star-icon-blank" svgIcon="star-icon-blank" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+            </div>
+            <div class="review-feedback-parag">Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+  
+

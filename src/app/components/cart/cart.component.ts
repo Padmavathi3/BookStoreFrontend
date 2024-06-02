@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
   customerAddresses: AddressObj[] = [];
   showAddressDetails: boolean = false;
   orderAddress!: AddressObj;
-
+  count:number=1;
   addressForm: FormGroup;
   isEditing: boolean = false;
   editingAddressId: number | null = null;
@@ -55,18 +55,49 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.checkLoginStatus()) {
-      this.cartService.getAllCartApi().subscribe(
-        res => this.cartItems = res.data,
-        err => console.error(err)
-      );
-    } else {
+      // this.cartService.getAllCartApi().subscribe(
+      //   res => this.cartItems = res.data,
+      //   err => console.error(err)
+      // );
+      this.cartService.cartBooksList.subscribe(res=>
+        {
+          this.cartItems=res;
+          console.log("cart list",JSON.stringify(this.cartItems, null, 2));     
+        }
+    )
+    } 
+    else {
       this.cartItems = this.bookService.getCartItems();
     }
   }
+ 
+  increaseCount(bookId: number) {
+    const selectedItem = this.cartItems.find(item => item.BookId === bookId);
+    if (selectedItem) {
+      selectedItem.Quantity++;
+      this.updateQuantity(selectedItem);
+      this.selectedBook = selectedItem; // Update selectedBook
+    }
+  }
 
-  placeOrder(book: BookObj): void {
-    this.selectedBook = book;
-    console.log('Selected book set:', this.selectedBook);
+  decreaseCount(bookId: number) {
+    const selectedItem = this.cartItems.find(item => item.BookId === bookId);
+    if (selectedItem && selectedItem.Quantity > 1) {
+      selectedItem.Quantity--;
+      this.updateQuantity(selectedItem);
+      this.selectedBook = selectedItem; // Update selectedBook
+    }
+  }
+
+  updateQuantity(item: any) {
+    this.cartService.updateQuantityCall(item.BookId, item.Quantity).subscribe(
+      res => console.log('Quantity updated in cart', res),
+      err => console.error('Error updating quantity in cart', err)
+    );
+  }
+ 
+  placeOrder1()
+  {
     if (!this.checkLoginStatus()) {
       const dialogRef = this.dialog.open(LoginSignupComponent, { data: { val: 'placeOrder', cart: this.cartItems } });
       dialogRef.afterClosed().subscribe(result => {
@@ -74,20 +105,46 @@ export class CartComponent implements OnInit {
           dialogRef.close();
         }
       });
-    } else {
-      this.addressService.getAllCustomerAddressCall().subscribe(
-        res => {
-          this.customerAddresses = res.data;
-          this.showAddressDetails = true;
-        },
-        err => {
-          console.error(err);
-          this.customerAddresses = [];
-          this.showAddressDetails = true;
-        }
-      );
-    }
+    } 
+    else{
+    this.addressService.addressList.subscribe(
+      res => {
+        this.customerAddresses = res;
+        this.showAddressDetails = true;
+      },
+      err => {
+        console.error(err);
+        this.customerAddresses = [];
+        this.showAddressDetails = true;
+      }
+    ); 
+  } 
   }
+  // placeOrder(book: BookObj): void {
+  //   this.selectedBook = book;
+  //   console.log('Selected book set:', this.selectedBook);
+  //   if (!this.checkLoginStatus()) {
+  //     const dialogRef = this.dialog.open(LoginSignupComponent, { data: { val: 'placeOrder', cart: this.cartItems } });
+  //     dialogRef.afterClosed().subscribe(result => {
+  //       if (this.checkLoginStatus()) {
+  //         dialogRef.close();
+  //       }
+  //     });
+  //   } 
+  //   else {
+  //     this.addressService.addressList.subscribe(
+  //       res => {
+  //         this.customerAddresses = res;
+  //         this.showAddressDetails = true;
+  //       },
+  //       err => {
+  //         console.error(err);
+  //         this.customerAddresses = [];
+  //         this.showAddressDetails = true;
+  //       }
+  //     );
+  //   }
+  // }
 
   checkLoginStatus(): boolean {
     return localStorage.getItem('AuthToken') !== null;
@@ -95,37 +152,40 @@ export class CartComponent implements OnInit {
 
   continueOrder(): void {
     if (this.addressForm.valid) {
-      const newAddress: AddressObj = this.addressForm.value;
+        const newAddress: AddressObj = this.addressForm.value;
 
-      if (this.isEditing && this.editingAddressId !== null) {
-        // Editing existing address
-        this.addressService.editAddressCall(this.editingAddressId, newAddress).subscribe(
-          res => {
-            // Update the address in the local list
-            const index = this.customerAddresses.findIndex(addr => addr.AddressId === this.editingAddressId);
-            if (index !== -1) {
-              this.customerAddresses[index] = newAddress;
-            }
-            this.resetAddressForm();
-          },
-          err => console.error(err)
-        );
-      } else {
-        // Adding new address
-        this.addressService.addAddressCall(newAddress).subscribe(
-          res => {
-            this.customerAddresses.push(newAddress);
-            this.resetAddressForm();
-          },
-          err => console.error(err)
-        );
-      }
+        if (this.isEditing && this.editingAddressId !== null) {
+            // Ensure editingAddressId is a number
+            const updatedAddress: AddressObj = { ...newAddress, AddressId: this.editingAddressId };
+            this.addressService.editAddressCall(this.editingAddressId, updatedAddress).subscribe(
+                res => {
+                    // Update the address in the local list
+                    const index = this.customerAddresses.findIndex(addr => addr.AddressId === this.editingAddressId);
+                    if (index !== -1) {
+                        this.customerAddresses[index] = updatedAddress;
+                    }
+                    this.resetAddressForm();
+                },
+                err => console.error(err)
+            );
+        } 
+        else {
+            // Adding new address
+            this.addressService.addAddressCall(newAddress).subscribe(
+                res => {
+                  this.customerAddresses.push(newAddress);
+                  this.resetAddressForm();
+                },
+                err => console.error(err)
+            );    
+        }
     }
-  }
+}
+
 
   resetAddressForm(): void {
     this.AddNewAddress = false;
-    this.showOrderSummary = false;
+    this.showOrderSummary = true;
     this.showAddressDetails = true;
     this.isEditing = false;
     this.editingAddressId = null;
@@ -161,7 +221,7 @@ export class CartComponent implements OnInit {
     this.addressService.removeAddressCall(mobileNumber).subscribe(
       res => {
         console.log(res);
-        this.customerAddresses = this.customerAddresses.filter(address => address.MobileNumber !== mobileNumber);
+        this.customerAddresses = this.customerAddresses.filter(address => address.MobileNumber == mobileNumber);
       },
       err => console.error(err)
     );
@@ -176,20 +236,27 @@ export class CartComponent implements OnInit {
   handleCheckOut(): void {
     console.log('Selected book:', this.selectedBook);
     console.log('Order address:', this.orderAddress);
-    if (this.selectedBook && this.orderAddress) {
-      const body = {
-        bookId: this.selectedBook.BookId,
+    if (this.cartItems.length && this.orderAddress && this.orderAddress.AddressId) {
+      const orderDetails = this.cartItems.map(item => ({
+        bookId: item.BookId,
         addressId: this.orderAddress.AddressId,
         orderDate: new Date().toISOString()
-      };
-      this.orderService.addOrderCall(body).subscribe(res => {
-        console.log(res);
-        this.router.navigate(["/dashboard/order", this.orderAddress.AddressId]);
-      }, err => {
-        console.error(err);
+      }));
+
+      orderDetails.forEach(order => {
+        this.orderService.addOrderCall(order).subscribe(
+          res => {
+            console.log(res);
+            this.router.navigate(["/dashboard/order", this.orderAddress.AddressId]);
+          },
+          err => {
+            console.error(err);
+          }
+        );
       });
     } else {
-      console.error('Book or address not selected.');
+      console.error('Cart is empty or address not selected.');
     }
   }
+
 }

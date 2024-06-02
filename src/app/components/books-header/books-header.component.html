@@ -1,24 +1,29 @@
-<div class="header-main-cnt">
-    <img src="assets/images/education.png" alt="Image not found">
-    <h3 class="title">BookStore</h3>
-  
-    <div class="search-container">
-      <input type="text" class="search-input" placeholder="Search...">
-      <mat-icon class="search-icon" svgIcon="search-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
-    </div>
-  
-    <div class="profile">
-      <mat-icon class="profile-icon" [matMenuTriggerFor]="ProfileMenu" svgIcon="profile-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
-      <span>Profile</span>
-    </div>
-  
-    <div class="cart">
-      <mat-icon class="cart-icon" svgIcon="cart-icon" aria-hidden="false" aria-label="Search SVG icon" (click)="handleCart()"></mat-icon>
-      <span>Cart</span>
+ <div class="header-main-cnt">
+    <div class="inner-main-cnt">
+      <div class="img-span-search-cntr">
+        <div class="img-span-cntr">
+          <img class="book-img" src="assets/images/education.png" alt="Image not found" />
+          <span routerLink="/books">BookStore</span>
+        </div>
+        <div class="search-container">
+          <mat-icon class="search-icon" svgIcon="search-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+          <input type="text" class="search-input" placeholder="Search..." (input)="handleSearchString()" [(ngModel)]="searchString" />
+        </div>
+      </div>
+      <div class="profile-cart-cnt">
+        <div class="profile" [matMenuTriggerFor]="Profile">
+          <mat-icon svgIcon="profile-icon" aria-hidden="false" aria-label="Profile SVG icon"></mat-icon>
+          <span>Profile</span>
+        </div>
+        <div class="cart-cntr" routerLink="/cart">
+          <mat-icon class="cart-icon" svgIcon="cart-icon" aria-hidden="false" aria-label="Cart SVG icon" (click)="handleCart()"></mat-icon>
+          <span>Cart</span>
+        </div>
+      </div>
     </div>
   </div>
   
-  <mat-menu #ProfileMenu="matMenu">
+  <mat-menu #Profile="matMenu">
     <div class="profile-history" *ngIf="isLoggedIn">
       <span>Welcome</span>
       <span>To access account and manage orders</span>
@@ -28,18 +33,19 @@
         <div class="heart-icon" (click)="handleWishlist()">&#x2764; Wishlist</div>
       </div>
     </div> 
-    <div *ngIf="!isLoggedIn">
-    <div class="login-signin">
+
+    <div class="login-signin" *ngIf="!isLoggedIn">
       <span>Hello Padmavathi,</span>
-      <div class="profile-icon">Profile</div>
-      <div class="order-icon" (click)="handleOrderDetails()">My Orders</div>
-      <div class="wishlist" (click)="handleWishlist()">&#x2764;My Wishlist</div>
-      <button mat-button (click)="logout()">LOGOUT</button>
-  </div>
-  </div>
-  </mat-menu>   
+      <span class="profile-icon">Profile</span>
+      <span class="order-icon" (click)="handleOrderDetails()">My Orders</span>
+      <span class="wishlist" (click)="handleWishlist()">&#x2764;My Wishlist</span>
+      <button mat-button (click)="logOut()" class="logout">LOGOUT</button>
+     </div>
+
+  </mat-menu> 
   
-  <div>
-    <router-outlet></router-outlet>
-  </div>
+  <router-outlet></router-outlet>
+  
+
+
   

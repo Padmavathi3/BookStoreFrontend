@@ -1,97 +1,225 @@
-.cart-book-container,.showcustomerDetails {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px; /* Add margin between book containers */
-    display: flex; /* Use flexbox to control layout */
-    justify-content: space-between; /* Align items at the start and end */
-    align-items: center; /* Vertically center items */
-}
-
-.cart-book-image {
-    display: flex;
-    gap: 7%;
-}
-
-.cart-book-details {
+.cart-main-cnt{
+    width:56.6%;
+    margin-left: 174px;;
     display: flex;
     flex-direction: column;
-    gap: 5%;
 }
-
-.cart-book-details span:first-child {
-    white-space: nowrap; /* Prevent line breaks */
+.title-nav
+{
+    width: 100%;
+    margin-top: 19px;
 }
-.buttons {
+.home-nav{
+    text-align: left;
+    font: normal normal normal 12px/16px Roboto;
+    letter-spacing: 0px;
+    color: #9D9D9D;
+}
+.cart-nav{
+    text-align: left;
+    font: normal normal normal 12px/16px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+}
+.cart-books-cnt{
+    margin-top: 17px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 1px;
     display: flex;
-    gap: 30px;
-    align-self: flex-end; /* Align buttons to the end */
+    flex-direction: column;
+    padding:19px 27px 20px 36px; 
+    width: calc(100% - 63px);
 }
-
-button {
-    background-color: blue;
-    color: white;
-}
-
-.back-to-dashbaord a h3 {
-    text-decoration: none;
-    margin-left: 15%;
-}
-
-.book-cnt {
-    width: 62%; /* Adjust width as needed */
-    margin-left: 15%;
-}
-
-.heading-maps {
+.cart-heading-location-cnt{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    padding: 1% 10px;
-}
 
-.maps {
+
+}
+.cart-heading{
+    text-align: left;
+    font: normal normal medium 18px/24px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+}
+.loc-icon-cnt{
+    width:35.5%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 1px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.loc-icon
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.cartlist-books-cnt{
+    display: flex;
+    flex-direction: row;
+    gap:38px;  
+    padding-bottom:55px; 
+}
+.book-image-cnt{
+    width: 65px;
+    height: 85px;
+}
+.book-details
+{
+    display: flex;
+    flex-direction: column;
+}
+.book-name{
+    text-align: left;
+     font: normal normal normal 18px/24px Roboto;
+     letter-spacing: 0px;
+     color: #0A0102;
+}
+.author-name{
+    text-align: left;
+    font: normal normal normal 12px/16px Roboto;
+    letter-spacing: 0px;
+    color: #9D9D9D;
+    margin-top: 5px;
+}
+.price{
+    text-align: left;
+    font: normal normal bold 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+    margin-top: 10px;
+}
+.quantity-remove-button{
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    margin-top: 27px;
+}
+.symbol{
     border: 1px solid black;
-    margin-right: 20px;
-    padding: 3px;
+    border-radius: 100%;
+    height: 24px; 
+    width: 24px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+        cursor: pointer;
+    }
+    
 }
+.number-of-books{
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    height: 20px; 
+    width: 30px; 
+    padding-top: 3px;
+}
+.remove{
+    text-align: left;
+    font: normal normal normal 15px Lato;
+    letter-spacing: 0px;
+    color: #0A0102;
+    margin-left:20px;
+}
+.place-order-btn{
+    display: flex;
+    justify-content: flex-end;
+}
+.customer-details-cnt{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 1px;
+    margin-top: 15px;
+    width: calc(100% - 63px);
+    padding:19px 27px 20px 36px; 
 
-.content{
-  margin-left: 10%;
-}   
+}
+.address-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.adress-details-heading{
+    text-align: left;
+    font: normal normal normal 15px/18px Lato;
+    letter-spacing: 0px;
+    color: #333232;
+}
+.add-new-address{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #A03037;
+    border-radius: 2px;
+    text-align: left;
+    color: #A03037;
+}
+.customerDetails{
+  display: flex;
+  flex-direction: column;
+}
+.addressDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.address-info{
+    display: flex;
+    flex-direction: column;
+  
+}
+.address-buttons{
+    margin-top: 90px;
+}
+.removeAddress{
+    background: #A03037 0% 0% no-repeat padding-box;
+    border: 1px solid #A03037;
+    border-radius: 2px;
+    color: white;
+    margin: 0px 5px;
+}
+.editAddress{
+    background: #007bff 0% 0% no-repeat padding-box;
+    border: 1px solid #A03037;
+    border-radius: 2px;
+    color: white;
+    margin: 0px 5px;
+}
+.continueAddress{
+    background: #28a745 0% 0% no-repeat padding-box;
+    border: 1px solid #A03037;
+    border-radius: 2px;
+    color: white;
+    margin: 0px 5px;
+}
 
 .order-address{
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px; /* Add margin between book containers */
-    display: flex; /* Use flexbox to control layout */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 1px;
+    margin-top: 15px;
+    width: calc(100% - 63px);
+    padding:19px 27px 20px 36px; 
+    display: flex; 
     flex-direction: column;
-    width: 60%; /* Adjust width as needed */
-    height:auto;
-    margin-left: 15%;
+
 }
-
-
-.add-new-address{
-    height:10%;
-    background-color: white;
-    color: red;
-    border: 1px solid red;
-}
-
 .name-number-fields, .city-state-fields{
     display: flex;
     flex-direction: row;
-    gap:15%;
+    gap:10px;
 }
 .name, .number, .city, .state {
     display: flex;
     flex-direction: column;
-    width: 45%; /* Set width for the form field containers */
-}
-
-mat-form-field {
-    width: 80%; /* Ensure mat-form-field takes full width of its container */
 }
 
 .address, .type{
@@ -107,87 +235,46 @@ mat-form-field {
     flex-direction: row;
     gap: 10%;
 }
-.sumbit-button{
+.submit-button {
+    background-color: #004085; 
+    border: 1px solid #030303;
+    border-radius: 2px; 
+    color: white;
+}
+
+
+
+.order-summery-cnt{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 1px;
+    margin-top: 15px;
+    margin-bottom: 35px;
+    width: calc(100% - 63px);
+    padding:19px 27px 20px 36px; 
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+.order-summary-heading{
+    text-align: left;
+    font: normal normal normal 15px/18px Lato;
+    letter-spacing: 0px;
+    color: #333232;
+}
+.order-summary-items{
+    display: flex;
+    flex-direction: row;
+    gap:42px;
+    margin-top: 30px;
+}
+.book-details{
+   display: flex;
+   flex-direction: column; 
+   
+}
+.checkout-btn{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
-
-.order-summary{
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px; /* Add margin between book containers */
-    display: flex; /* Use flexbox to control layout */
-    flex-direction: column;
-    flex-direction: column;
-    margin-left: 15%;
-    width: 60%; /* Adjust width as needed */
-    height:auto;
-}
-
-.order-item{
-    display: flex;
-    flex-direction: row;
-    gap:5%;
-}
-.order-item-details{
-    display: flex;
-    flex-direction: column;
-    gap: 5%;
-}
-
-.checkout-button{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-.showcustomerDetails {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px; 
-    display: flex; 
-    flex-direction: column;
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-.address-heading {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center; 
-    width: 100%; 
-}
-
-.customerDetail
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center; 
-    width: 100%; 
-}
-.addressDetails{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.address-info{
-    display: flex;
-    flex-direction: column;
-}
-.address-buttons{
-    display: flex;
-    flex-direction: row;
-}
-.editAddress,.removeAddress,.continuewithThisAddress{
-    border: 1px solid;
-    color: red;
-    background-color: white;
-    height: 50px;
-    
-}
-
-

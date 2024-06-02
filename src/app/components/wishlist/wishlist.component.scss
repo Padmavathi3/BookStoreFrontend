@@ -1,47 +1,94 @@
-.wishlist-book-container {
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-.wishlist-book-image {
-    display: flex;
-    gap: 7%;
-}
-
-.wishlist-book-details {
+.wishlist-main-cnt{
+    width:74.8%;
+    margin-left: 174px;;
     display: flex;
     flex-direction: column;
-    gap: 5%;
+    //margin:19px auto 174px auto;
 }
-
-.cart-book-details span:first-child {
-    white-space: nowrap; /* Prevent line breaks */
+.title-nav
+{
+    width: 100%;
+    margin-top: 19px;
 }
-
-button {
-    background-color: blue;
-    color: white;
+.home-nav{
+    text-align: left;
+    font: normal normal normal 12px/16px Roboto;
+    letter-spacing: 0px;
+    color: #9D9D9D;
 }
-
-.back-to-dashbaord a h3 {
-    text-decoration: none;
-    margin-left: 15%;
+.wishlist-nav{
+    text-align: left;
+    font: normal normal normal 12px/16px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
 }
-
-.book-cnt {
-    width: 62%; 
-    margin-left: 15%;
+.wishlist-cnt{
+    width: 100%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-top: 1px solid #E4E4E4;
+    border-left: 1px solid #E4E4E4;
+    border-right: 1px solid #E4E4E4;
+    margin-top: 17px;
 }
+.wishlist-heading-cnt{
+    //height: 55px;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border: 1px solid #E4E4E4;
+    border-radius: 1px;
+    padding:17px 6px 14px 36px;
+}
+.wishlist-heading{
+    text-align: left;
+    font: normal normal medium 18px/24px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+}
+.wishlist-books-cnt{
+    display: flex;
+    flex-direction: row;
+    gap:38px;  
+    padding:40px 40px 40px 36px; 
+    border-bottom: 1px solid #E4E4E4 ;
+}
+.book-image-cnt{
+    width: 65px;
+    height: 85px;
+   // border:1px solid black;
+}
+.book-details
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Added to take up available space */
 
-
-.content{
-  margin-left: 10%;
-}   
-
+}
+.book-name{
+    text-align: left;
+     font: normal normal normal 18px/24px Roboto;
+     letter-spacing: 0px;
+     color: #0A0102;
+}
+.author-name{
+    text-align: left;
+    font: normal normal normal 12px/16px Roboto;
+    letter-spacing: 0px;
+    color: #9D9D9D;
+    margin-top: 5px;
+}
+.price{
+    text-align: left;
+    font: normal normal bold 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+    margin-top: 13px;
+}
+.empty-wishlist{
+    width: 100%;
+    margin-top: 17px;
+}
+.delete-icon{
+    width: 17px;
+    height: 53px;
+}
 
 

@@ -3,21 +3,18 @@
          <img src="assets/images/order.png" alt="image not found" width="500px" height="270px">
     </div>  
     <div class="order-confirm-message">
-        hurray!!! your order is confirmed the order id is #{{orderDetail.OrdeId}} save the order id for further communication..   
+        hurray!!! your order is confirmed the order id is #1234 save the order id for further communication..   
      </div>  
-     <div class="order-information">
-          <div class="headings">
-            <span>Email Us</span>
-            <span>Contact Us</span>
-            <span>Address</span>
+     <div class="order-detail">
+          <div class="order-detail-header">
+               <span class="email">Email us</span><span>Contact us</span><span>Address</span>
           </div>
-          <hr>
-          <div class="information">
-           <span>{{orderDetail.Email}}</span>
-           <span>{{orderDetail.MobileNumber}}</span>
-           <span>{{orderDetail.FullAddress}}</span>
+          <div class="user-detail-main">
+           <div class="details"> <span>padmavathichilamala@gmail.com</span></div>
+           <div class="details"> <span>7093975758</span></div>
+           <div class="details"> <span>1/7, Bhumayapalli(v),Khajipet(M),Kadapa(dist)</span></div>
           </div>
-     </div> 
+       </div>
      <div>
         <button mat-flat-button  (click)="continueShopping()">CONTINUE SHOPPING</button> 
      </div>

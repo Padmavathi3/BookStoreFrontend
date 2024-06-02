@@ -1,63 +1,68 @@
-<div class="cartdetails-outer-cnt">
-  <div class="back-to-dashbaord">
-    <a routerLink="/dashboard/books"><h3>Home</h3></a>
+<div class="cart-main-cnt">
+  <div class="title-nav">
+    <span class="home-nav" routerLink="/dashboard/books">Home</span>
+    <span class="cart-nav">/ My Cart</span>
   </div>
-  <div *ngIf="cartItems.length > 0" class="book-cnt">
-    <div class="heading-maps">
-      <span>My Cart</span>
-      <span class="maps">
-        <mat-icon class="location-icon" svgIcon="location-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
-        Use Current Location
-      </span>
+
+  <div class="cart-books-cnt">
+    <div class="cart-heading-location-cnt">
+      <span class="cart-heading">My Cart ({{ cartItems.length }})</span>
+      <div class="loc-icon-cnt">
+        <span class="loc-icon">
+          <mat-icon svgIcon="location-icon"></mat-icon> Bridgelabz Solutions...
+          <mat-icon class="drop-down" svgIcon="drop-down-icon"></mat-icon>
+        </span>
+      </div>
     </div>
-    <div *ngFor="let item of cartItems" class="cart-book-container">
-      <div class="cart-book-image">
-        <img [src]="item.BookImage" height="100px" width="100px">
-        <div class="cart-book-details">
-          <span style="font-size: 15px;"><b>{{item.BookName}}</b></span>
-          <span>{{item.AuthorName}}</span>
-          <span style="font-size: 15px;"><b>Rs. {{item.Price * item.Quantity}}</b></span>
-          <span>{{item.Quantity}}</span>
+    <div class="cartlist-books-cnt" *ngFor="let item of cartItems">
+      <img src="{{ item.BookImage }}" alt="image is not found" class="book-image-cnt">
+      <div class="book-details">
+        <span class="book-name">{{ item.BookName }}</span>
+        <span class="author-name">{{ item.AuthorName }}</span>
+        <span class="price">Rs. {{item.Price * item.Quantity}}</span>
+        <div class="quantity-remove-button">
+          <span class="symbol" (click)="decreaseCount(item.BookId)">-</span>
+          <span class="number-of-books">{{ item.Quantity }}</span>
+          <span class="symbol" (click)="increaseCount(item.BookId)">+</span>
+          <span class="remove" (click)="removeFromCart(item)">Remove</span>
         </div>
       </div>
-      <div class="buttons">
-        <button mat-flat-button class="cart-button" (click)="removeFromCart(item)">Remove</button>
-        <button mat-flat-button class="wishlist-button" (click)="placeOrder(item)">Place Order</button>
-      </div>
     </div>
-    <div class="showcustomerDetails">
-      <div class="address-heading">
-        <h3>Customer Details</h3>
-        <button mat-flat-button class="add-new-address" (click)="AddNewAddress = true">Add New Address</button>
-      </div>
-      <div *ngIf="showAddressDetails" class="customerDetail">
-        <div *ngIf="customerAddresses.length > 0; else noAddress">
-          <div *ngFor="let address of customerAddresses" class="addressDetails">
-            <div class="address-info">
-              <span><b>Customer Name: </b>{{ address.CustomerName }}</span>
-              <span><b>Mobile Number: </b>{{ address.MobileNumber }}</span>
-              <span><b>Full Address: </b>{{ address.FullAddress }}</span>
-              <span><b>City: </b>{{ address.City }}</span>
-              <span><b>State: </b>{{ address.State }}</span>
-              <span><b>Type: </b>{{ address.Type }}</span>
-              <br>
-            </div>
-            <div class="address-buttons">
-              <button mat-flat-button class="editAddress" (click)="editAddress(address)">EDIT</button>
-              <button mat-flat-button class="removeAddress" (click)="removeAddress(address.MobileNumber || 0)">REMOVE</button>
-              <button mat-flat-button class="continuewithThisAddress" (click)="continueWithAddress(address)">CONTINUE</button>
-            </div>
+    <div class="place-order-btn">
+      <button mat-raised-button color="primary" (click)="placeOrder1()">PLACE ORDER</button>
+    </div>
+  </div>
+
+  <div class="customer-details-cnt">
+    <div class="address-header">
+      <span class="address-details-heading">Address Details</span>
+      <button mat-flat-button *ngIf="showAddressDetails" class="add-new-address" (click)="AddNewAddress = true">Add New Address</button>
+    </div>
+    <div class="customerDetails">
+      <div *ngIf="customerAddresses.length > 0; else noAddress">
+        <div *ngFor="let address of customerAddresses" class="addressDetails">
+          <div class="address-info">
+            <span><b>Customer Name: </b>{{ address.CustomerName }}</span>
+            <span><b>Mobile Number: </b>{{ address.MobileNumber }}</span>
+            <span><b>Full Address: </b>{{ address.FullAddress }}</span>
+            <span><b>City: </b>{{ address.City }}</span>
+            <span><b>State: </b>{{ address.State }}</span>
+            <span><b>Type: </b>{{ address.Type }}</span>
+            <br>
+          </div>
+          <div class="address-buttons">
+            <button mat-flat-button class="editAddress" (click)="editAddress(address)">EDIT</button>
+            <button mat-flat-button class="removeAddress" (click)="removeAddress(address.AddressId)">REMOVE</button>
+            <button mat-flat-button class="continueAddress" (click)="continueWithAddress(address)">CONTINUE</button>
           </div>
         </div>
-        <ng-template #noAddress>
-          <p>No addresses are present. Create new address.</p>
-        </ng-template>
       </div>
-    </div>
-    <div class="showOrderSummery">
-      <h3>Order Summary</h3>
+      <ng-template #noAddress>
+        <p *ngIf="showAddressDetails">No addresses are present. Create new address.</p>
+      </ng-template>
     </div>
   </div>
+
   <div class="order-address" *ngIf="AddNewAddress">
     <form [formGroup]="addressForm">
       <div class="name-number-fields">
@@ -104,30 +109,27 @@
           <mat-radio-button value="other">Other</mat-radio-button>
         </mat-radio-group>
       </div><br>
-      <div class="submit-button">
-        <button mat-flat-button class="continue-button" (click)="continueOrder()">{{ isEditing ? 'Update Address' : 'Add Address' }}</button>
+      <div>
+        <button mat-flat-button class="submit-button" (click)="continueOrder()">{{ isEditing ? 'Update Address' : 'Add Address' }}</button>
       </div>
     </form>
   </div>
-  <div class="order-summary" *ngIf="showOrderSummary">
-    <h3>Order Summary</h3>
-    <div class="order-item" *ngIf="selectedBook">
-      <div class="order-item-image">
-        <img [src]="selectedBook.BookImage" height="100px" width="100px">
+  <div class="order-summery-cnt">
+    <span class="order-summary-heading">Order Summary</span>
+    <div *ngIf="showOrderSummary">
+      <div *ngFor="let item of cartItems" class="order-summary-items">
+        <img src="{{ item.BookImage }}" alt="image is not found" class="book-image-cnt">
+        <div class="book-details">
+          <span class="book-name">{{ item.BookName }}</span>
+          <span class="author-name">{{ item.AuthorName }}</span>
+          <span class="price">Rs. {{item.Price * item.Quantity}}</span>
+          <span class="quantity">Quantity: {{ item.Quantity }}</span>
+        </div>
       </div>
-      <div class="order-item-details">
-        <span><b>{{selectedBook?.BookName}}</b></span>
-        <span>{{selectedBook?.AuthorName}}</span>
-        <span>Price: Rs. {{selectedBook?.Price}}</span>
-        <span>Quantity: {{selectedBook?.Quantity}}</span>
-        <span>Total Price: Rs. {{selectedBook?.Price! * selectedBook?.Quantity! || 0}}</span>
+      <div class="checkout-btn">
+        <button mat-raised-button color="primary" (click)="handleCheckOut()">CHECKOUT</button>
       </div>
     </div>
-    <div class="checkout-button">
-      <button mat-flat-button (click)="handleCheckOut()">CHECKOUT</button>
-    </div>
-  </div>
-  <div *ngIf="cartItems.length === 0" class="empty-cart">
-    <span class="content">Your cart is empty</span>
   </div>
 </div>
+

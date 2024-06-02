@@ -1,27 +1,23 @@
-<div class="orderdetails-outer-cnt">
-    <div class="back-to-dashbaord">
-        <a routerLink="/dashboard/books"><h3>Home</h3></a>
+
+<div class="orderlist-main-cnt">
+    <div class="title-nav">
+        <span class="home-nav" routerLink="/dashboard/books">Home</span>
+        <span class="order-nav">/ My Order</span>
     </div>
-    <div *ngIf="OrderItems.length > 0" class="book-cnt">
-        <div>
-            <span>My OrderList</span>
-        </div>
-        <div *ngFor="let item of OrderItems" class="order-book-container">
-            <div class="order-book-image">
-                <img src="{{item.BookImage}}" height="100px" width="100px">
-                <div class="order-book-details">
-                    <span class="book-name"><b>{{item.BookName}}</b></span>
-                    <span>{{item.AuthorName}}</span>
-                    <span style="font-size: 15px;"><b>Rs. {{item.Price}}</b></span>
+    <div class="orderlist-cnt" *ngIf="OrderItems.length > 0">
+            <div *ngFor="let item of OrderItems" class="orderlist-books-cnt">
+                <img src="{{item.BookImage}}" alt="image is not found" class="book-image-cnt">
+                <div class="book-details">
+                   <span class="book-name">{{item.BookName}}</span>
+                   <span class="author-name">{{item.AuthorName}}</span>
+                   <span class="price">Rs. {{item.Price}}</span>
                 </div>
-                <div class="order-date">
-                    <span>Order placed on {{item.OrderDate}}</span>
-                </div>
+                <ul class="circle-list">
+                    <li><span class="order-date">Order placed on {{item.OrderDate}}</span></li>
+                </ul>
             </div>
-        </div>
     </div>
-   
-    <div *ngIf="OrderItems.length === 0" class="empty-cart">
-        <span class="content">Do login, After login only You can see your orderlist</span>
+    <div *ngIf="OrderItems.length === 0" class="empty-orderlist">
+        <span class="content">Your orderlist is empty</span>
     </div>
 </div>

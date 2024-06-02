@@ -12,11 +12,18 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('AuthToken') !== null) {
-      this.orderService.getOrdersCall().subscribe(res => {
-        this.OrderItems = res.data;
-      }, err => {
-        console.error('Error fetching orderlist', err);
-      });
+      // this.orderService.getOrdersCall().subscribe(res => {
+      //   this.OrderItems = res.data;
+      // }, err => {
+      //   console.error('Error fetching orderlist', err);
+      // });
+
+      this.orderService.orderList.subscribe(res=>
+          {
+            this.OrderItems=res;
+            console.log("order list",JSON.stringify(this.OrderItems, null, 2));
+          }
+        )
     } 
     else{
       alert("Do login, After login only You can see your orderlist")

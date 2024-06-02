@@ -1,51 +1,85 @@
-.order-book-container {
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-.order-book-image {
-    display: flex;
-    gap: 7%;
-    flex: 1;
-}
-
-.order-book-details {
+.orderlist-main-cnt{
+    width:74.8%;
+    margin-left: 174px;;
     display: flex;
     flex-direction: column;
-    gap: 5%;
-    flex: 1;
+}
+.title-nav
+{
+    width: 100%;
+    margin-top: 19px;
+}
+.home-nav{
+    text-align: left;
+    font: normal normal normal 12px/16px Roboto;
+    letter-spacing: 0px;
+    color: #9D9D9D;
+}
+.order-nav{
+    text-align: left;
+    font: normal normal normal 12px/16px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+}
+.orderlist-cnt{
+    width: 100%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    margin-top: 17px;
+    
+}
+.orderlist-books-cnt{
+    display: flex;
+    flex-direction: row;
+    gap:38px;  
+    padding:40px 40px 40px 36px; 
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #E4E4E4;
+    margin-bottom: 22.22px;
+}
+.book-image-cnt{
+    width: 65px;
+    height: 85px;
+}
+.book-details
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
 }
 
-.order-date {
-    align-self: flex-end;
+.book-name{
+    text-align: left;
+     font: normal normal normal 18px/24px Roboto;
+     letter-spacing: 0px;
+     color: #0A0102;
+}
+.author-name{
+    text-align: left;
+    font: normal normal normal 12px/16px Roboto;
+    letter-spacing: 0px;
+    color: #9D9D9D;
+    margin-top: 5px;
+}
+.price{
+    text-align: left;
+    font: normal normal bold 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+    margin-top: 13px;
 }
 
-.order-book-details .book-name {
-    white-space: nowrap; /* Prevent line breaks */
-    overflow: hidden;
-    text-overflow: ellipsis;
+.empty-orderlist{
+    width: 100%;
+    margin-top: 17px;
+}
+.circle-list {
+    list-style-type: disc;
+    color: green; /* Change the color to green */
 }
 
-button {
-    background-color: blue;
-    color: white;
-}
-
-.back-to-dashbaord a h3 {
-    text-decoration: none;
-    margin-left: 15%;
-}
-
-.book-cnt {
-    width: 62%; 
-    margin-left: 15%;
-}
-
-.content {
-    margin-left: 10%;
+.order-date{
+    text-align: left;
+    font: normal normal bold 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
 }

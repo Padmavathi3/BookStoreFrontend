@@ -19,6 +19,7 @@ export class OrderComponent implements OnInit {
        this.orderDetail= res1.data.filter((e:any)=>e.AddressId==res2['addressId'])[0]
       })
     })
+    
   }
 
   continueShopping()

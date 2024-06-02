@@ -3,11 +3,11 @@
     flex-direction: column;
     align-items: center;
     margin-top: 3%;
-    gap: 10%; /* Use this to create space between direct children of .order-cnt */
+    gap: 10%; 
 }
 
 .order-image {
-    margin-bottom: 20px; /* Space below the image */
+    margin-bottom: 20px; 
 }
 
 .order-confirm-message {
@@ -21,34 +21,39 @@
     margin-bottom: 20px; 
 }
 
-.order-information {
-    border: 1px solid;
+.order-detail{
     width: 50%;
-    margin-bottom: 20px; 
+    border: 1px solid rgb(181, 179, 179);
 }
-
-.headings, .information {
+.order-detail-header{
+    border: 1px solid rgb(208, 207, 207);
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     flex-direction: row;
-    gap: 20%;
+    font-size: medium;
+    padding: 1.5% 0% 1.5% 0%;
+}
+.user-detail-main{
+    border: 1px solid rgb(212, 211, 211);
+    display: flex;  
+}
+.details{
+    border: 1px solid rgb(219, 219, 218);
+    width: 33.3%;
+}
+.details span{
+    font-size: small;
+    padding: 7% 0% 7% 0%;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.information span:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 1px;
-    background-color: black;
-}
 
-.button-container {
-    margin-top: 20px; 
-}
 
 button {
     background-color: blue;
     color: white;
+    margin-top: 20px;
 }

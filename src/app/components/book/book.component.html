@@ -1,25 +1,42 @@
-<div class="book-outer-cnt">
-    <!-- <img src="C:/Users/padma/OneDrive/Pictures/Book1.png">
-    <img src="assets/images/Book1.png" alt=""> -->
-    <div *ngFor="let book of BookObjList" class="book-cnt" >
-        <div class="book-image-background-cnt" (click)="handleBook(book)">
-            <img src="{{book?.BookImage}}" class="book-image">
-        </div>
 
-        <div class="book-details">
-            <span><b>{{book?.BookName}}</b></span>
-        
-        
-            <span>{{book?.AuthorName}}</span>
-        
-        <div class="rating-quantity">
-         <span class="rating">4.5 &#9733;</span>  
-         <span>(20)</span>
-        </div>
-       
-            <span><b>Rs. {{book?.Price}}</b></span>
-       
-       </div>
-        
+<div class="book-outer-container">
+    <div class="books-quantity-sort-cnt">
+      <div class="books-qty">
+        <div class="books-txt">Books</div>
+        <div class="qty">({{ booksList.length }} Items)</div>
+      </div>
+      <div class="sort-cnt">
+        <div>Sort by relevance</div>
+        <mat-icon svgIcon="drop-down-icon"></mat-icon>
+      </div>
     </div>
-</div>
+    <div class="all-books-cntr">
+      <div
+        class="book-container"
+        *ngFor="let book of booksList |search : searchString"
+        (click)="handleBook(book)"
+      >
+        <div class="book-image-background-container">
+          <img class="book-image" [src]="book.BookImage" alt="Image not found" />
+        </div>
+        <div class="book-details">
+          <span class="book-title"
+            ><b>{{ book.BookName }}</b></span
+          >
+          <div class="book-author">{{ book.AuthorName }}</div>
+  
+          <div class="rating-qty-cnt">
+            <span class="book-rating">4.5 *</span>
+            <div class="book-qty">({{ book.Quantity }})</div>
+          </div>
+          <div class="price-cnt">
+            <span><b>Rs. {{ book.Price }}</b></span>
+            
+            <div class="discount">
+              <del>Rs. {{ book.Price + 500 }}</del>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

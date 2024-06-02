@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { BookService } from 'src/app/services/book-service/book.service';
 import { CartService } from 'src/app/services/cart-service/cart.service';
 import { WishlistService } from 'src/app/services/wishlist-service/wishlist.service';
 import { BookObj } from 'src/assets/booksInterface';
+import {  YELLOW_STAR_ICON } from 'src/assets/svg-icons';
 
 @Component({
   selector: 'app-book-details',
@@ -15,18 +19,20 @@ export class BookDetailsComponent implements OnInit {
   addedToBag: boolean = false;
   count: number = 1;
 
-  constructor(private bookService: BookService, private cartService: CartService,private wishlistService:WishlistService) { }
+  constructor(private bookService: BookService, private cartService: CartService,private wishlistService:WishlistService,private route:ActivatedRoute, private domSanitizer: DomSanitizer, 
+    private matIconRegistry: MatIconRegistry) {
+    matIconRegistry.addSvgIconLiteral("star-icon", domSanitizer.bypassSecurityTrustHtml(YELLOW_STAR_ICON));
+
+   }
 
   ngOnInit(): void {
-    this.bookService.currentstate.subscribe(res => {
-      this.selectedBook = res;
-      if (this.bookService.isBookInLocalCart(this.selectedBook)) {
-        this.count = this.bookService.getCartItemQuantity(this.selectedBook.BookId || 0);
-        this.addedToBag = true;
-      } else {
-        this.addedToBag = false;
-      }
-    });
+    this.bookService.allBooksList.subscribe(res1=>{    //Calls a service method to get a list of all books.
+      this.route.params.subscribe(res2=>{                   //Subscribes to route parameters to get the current bookId.
+        console.log(res2['bookId'])
+       this.selectedBook= res1.filter((e:any)=>e.BookId==res2['bookId'])[0]   //filter the data
+      })
+    })
+
   }
 
   addToBag() {
@@ -46,12 +52,13 @@ export class BookDetailsComponent implements OnInit {
           });
         }
       });
-    } else {
-      if (isBookInLocalCart) {
+    }
+    else {
+      if (isBookInLocalCart) {             //if book is true update quantity
         this.addedToBag = true;
         this.bookService.getCartItemQuantity(this.selectedBook.BookId || 0);
       } else {
-        this.addedToBag = true;
+        this.addedToBag = true;               //if book is false add new book
         this.selectedBook.Quantity = this.count;
         this.bookService.addToCart(this.selectedBook);
       }
@@ -61,7 +68,7 @@ export class BookDetailsComponent implements OnInit {
   increaseCount() {
     if (this.selectedBook.BookId !== undefined) {
       this.count++;
-      this.updateQuantity(this.selectedBook.BookId, 1);
+      this.updateQuantity(this.selectedBook.BookId, this.count);
     }
   }
 
@@ -69,7 +76,7 @@ export class BookDetailsComponent implements OnInit {
     if (this.count > 1) {
       if (this.selectedBook.BookId !== undefined) {
         this.count--;
-        this.updateQuantity(this.selectedBook.BookId, -1);
+        this.updateQuantity(this.selectedBook.BookId, this.count);
       }
     }
   }
