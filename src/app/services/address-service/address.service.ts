@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http-service/http.service';
 import { AddressObj } from 'src/assets/addressInterface';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddressService {
 
+  addressObj=new BehaviorSubject<AddressObj[]>([]);
+  addressList=this.addressObj.asObservable();
+
   constructor(private httpService:HttpService) { }
+
+  getAllAddress(address:AddressObj[])
+    {
+      this.addressObj.next(address);
+    }
 
   getAllCustomerAddressCall() {
     return this.httpService.getCustomerAddress("/Address/GetCustomerDetails");
